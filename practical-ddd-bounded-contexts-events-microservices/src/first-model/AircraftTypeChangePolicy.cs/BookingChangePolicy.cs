@@ -18,10 +18,7 @@ namespace AircraftTypeChangePolicy
         {
             mapper.ConfigureMapping<BookedFlightWasChanged>(message => message.BookingReferenceId)
                 .ToSaga(data => data.BookingReferenceId);
-
-            mapper.ConfigureMapping<BookingWasConfirmed>(message => message.BookingReferenceId)
-                .ToSaga(data => data.BookingReferenceId);
-
+            
             mapper.ConfigureMapping<BookingWasCancelled>(message => message.BookingReferenceId)
                 .ToSaga(data => data.BookingReferenceId);
 
