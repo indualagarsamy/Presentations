@@ -7,13 +7,12 @@
         
         public bool IsCancelled { get; set; }
 
-        public bool IsConfirmed { get; set; }
         public bool IsFlightChanged { get; set; }
 
 
         public bool CanCompleteSaga()
         {
-            return (IsCancelled || IsConfirmed) && IsFlightChanged;
+            return IsCancelled && IsFlightChanged;
         }
     }
 }

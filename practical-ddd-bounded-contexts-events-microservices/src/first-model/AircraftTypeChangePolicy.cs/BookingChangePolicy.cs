@@ -10,7 +10,6 @@ namespace AircraftTypeChangePolicy
 
     public class BookingChangePolicy : Saga<BookingChangePolicyData>, 
         IAmStartedByMessages<BookedFlightWasChanged>,
-        IAmStartedByMessages<BookingWasConfirmed>,
         IAmStartedByMessages<BookingWasCancelled>,
         IHandleTimeouts<CancellationGracePeriodElapsed>
 
@@ -68,17 +67,6 @@ namespace AircraftTypeChangePolicy
                 BookingReferenceId = Data.BookingReferenceId,
                 ConfirmationDate = DateTime.UtcNow
             }).ConfigureAwait(false);
-        }
-        
-        public Task Handle(BookingWasConfirmed message, IMessageHandlerContext context)
-        {
-            Data.IsConfirmed = true;
-            if (Data.CanCompleteSaga())
-            {
-                MarkAsComplete();
-            }
-
-            return Task.CompletedTask;
         }
     }
 
