@@ -2,7 +2,7 @@
 {
     using System.Threading.Tasks;
     using Booking.Commands;
-    using BookingContext.Events;
+    using Booking.Events;
     using NServiceBus.Testing;
     using NUnit.Framework;
 

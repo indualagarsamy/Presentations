@@ -5,7 +5,7 @@
     using Booking.Commands;
     using NServiceBus;
     using System.Threading.Tasks;
-    using BookingContext.Events;
+    using Booking.Events;
 
     public class ProposeNewRebookingWhenAircraftTypeHasChanged :
         IHandleMessages<AircraftTypeHasChanged>,

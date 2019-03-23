@@ -3,7 +3,7 @@
     using System;
     using System.Threading.Tasks;
     using Booking.Commands;
-    using BookingContext.Events;
+    using Booking.Events;
     using NServiceBus;
     public class GracePeriodForAcceptingRebookings : Saga<GracePeriodForAcceptingRebookingsData>,
         IAmStartedByMessages<RebookingWasProposed>,

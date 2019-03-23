@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BookingContext.Events\Booking.Events.csproj" />
+    <ProjectReference Include="..\Booking.Events\Booking.Events.csproj" />
     <ProjectReference Include="..\FlightPlanning.Events\FlightPlanning.Events.csproj" />
     <ProjectReference Include="..\Booking.Commands\Booking.Commands.csproj" />
   </ItemGroup>

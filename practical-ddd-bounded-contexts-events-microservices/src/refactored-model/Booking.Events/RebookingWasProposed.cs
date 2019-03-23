@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace BookingContext.Events
+﻿namespace Booking.Events
 {
     public class RebookingWasProposed
     {

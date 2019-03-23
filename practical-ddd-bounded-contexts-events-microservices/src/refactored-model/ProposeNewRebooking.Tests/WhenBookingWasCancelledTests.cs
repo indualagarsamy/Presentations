@@ -1,7 +1,7 @@
 ﻿namespace ProposeNewRebooking.Tests
 {
     using System.Threading.Tasks;
-    using BookingContext.Events;
+    using Booking.Events;
     using NServiceBus.Testing;
     using NUnit.Framework;
 
