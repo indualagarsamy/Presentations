@@ -1,4 +1,6 @@
-﻿namespace ProposeNewRebooking
+﻿using NServiceBus.Logging;
+
+namespace ProposeNewRebooking
 {
     using System;
     using System.Threading.Tasks;
@@ -21,6 +23,7 @@
 
         public async Task Handle(RebookingWasProposed message, IMessageHandlerContext context)
         {
+            logger.Info("Received RebookingWasProposed event");
             Data.IsRebookingProposed = true;
             Data.BookingReferenceId = message.BookingReferenceId;
 
@@ -40,6 +43,7 @@
 
         public Task Handle(BookingWasCancelled message, IMessageHandlerContext context)
         {
+            logger.Info("Received BookingWasCancelled event");
             Data.IsBookingCancelled = true;
 
             if (Data.CanCompleteSaga())
@@ -52,10 +56,13 @@
 
         public async Task Timeout(CancellationGracePeriodElapsed state, IMessageHandlerContext context)
         {
+            logger.Info("Received CancellationGracePeriodElapsed timeout message");
             MarkAsComplete();
             await context.Publish(new RebookingWasAccepted(Data.BookingReferenceId))
                 .ConfigureAwait(false);
         }
+
+        private ILog logger = LogManager.GetLogger<GracePeriodForAcceptingRebookings>();
     }
 
     public class CancellationGracePeriodElapsed

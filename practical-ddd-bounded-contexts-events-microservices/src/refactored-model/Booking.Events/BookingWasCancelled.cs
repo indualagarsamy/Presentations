@@ -1,6 +1,8 @@
 ﻿namespace Booking.Events
 {
-    public class BookingWasCancelled
+    using NServiceBus;
+
+    public class BookingWasCancelled : IEvent
     {
         public BookingWasCancelled(string bookingReferenceId)
         {

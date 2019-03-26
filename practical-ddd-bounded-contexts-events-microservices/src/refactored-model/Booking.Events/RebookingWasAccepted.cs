@@ -1,6 +1,8 @@
 ﻿namespace Booking.Events
 {
-    public class RebookingWasAccepted
+    using NServiceBus;
+
+    public class RebookingWasAccepted : IEvent
     {
         public RebookingWasAccepted(string bookingReferenceId)
         {

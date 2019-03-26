@@ -14,10 +14,6 @@
             var endpointConfiguration = new EndpointConfiguration("Booking.ConsoleUI");
             var transport = endpointConfiguration.UseTransport<LearningTransport>();
 
-            var routing = transport.Routing();
-            routing.RouteToEndpoint(typeof(AircraftTypeHasChanged), "ProposeNewBooking");
-            // TODO: Set up routing
-
             var endpointInstance = await Endpoint.Start(endpointConfiguration).ConfigureAwait(false);
 
             await RunLoop(endpointInstance).ConfigureAwait(false);

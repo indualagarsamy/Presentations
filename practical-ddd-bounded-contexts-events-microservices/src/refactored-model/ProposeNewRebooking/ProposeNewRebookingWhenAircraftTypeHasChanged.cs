@@ -1,6 +1,7 @@
-﻿namespace ProposeNewRebooking
+﻿using NServiceBus.Logging;
+
+namespace ProposeNewRebooking
 {
-    using System;
     using FlightPlanning.Events;
     using Booking.Commands;
     using NServiceBus;
@@ -23,8 +24,9 @@
                 customerId: "1",
                 reasonForRebooking: $"Aircraft type was changed from {message.OldAirCraftTypeId} to {message.NewAircraftTypeId} on flight {message.FlightId}");
 
-            await context.Send(cmd).ConfigureAwait(false);
-            
+            logger.Info("Received AircraftTypeHasChanged event, sending ProposeRebooking command");
+            await context.SendLocal(cmd).ConfigureAwait(false);
+
             //} 
         }
 
@@ -32,9 +34,12 @@
         {
             // Find a new route and once you find a good itinerary, publish event
             
+            logger.Info("Received ProposeRebooking command, publishing RebookingWasProposed event");
             await context.Publish(new RebookingWasProposed(
                 message.BookingReferenceId, 
                 message.ReasonForRebooking)).ConfigureAwait(false);
         }
+
+        private ILog logger = LogManager.GetLogger<ProposeNewRebookingWhenAircraftTypeHasChanged>();
     }
 }

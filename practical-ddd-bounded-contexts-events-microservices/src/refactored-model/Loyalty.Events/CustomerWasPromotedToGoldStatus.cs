@@ -1,8 +1,9 @@
-﻿using System;
-
-namespace Loyalty.Events
+﻿namespace Loyalty.Events
 {
-    public class CustomerWasPromotedToGoldStatus
+    using NServiceBus;
+    using System;
+
+    public class CustomerWasPromotedToGoldStatus : IEvent
     {
         public CustomerWasPromotedToGoldStatus(string customerId, 
             DateTime effectiveFrom, 
