@@ -21,7 +21,7 @@
 
             var cmd = new ProposeRebooking(bookingReferenceId: "QAZ123",
                 customerId: "1",
-                reasonForRebooking: "Aircraft type was changed from Boeing 787 to Boeing 777");
+                reasonForRebooking: $"Aircraft type was changed from {message.OldAirCraftTypeId} to {message.NewAircraftTypeId} on flight {message.FlightId}");
 
             await context.Send(cmd).ConfigureAwait(false);
             
