@@ -8,9 +8,9 @@ namespace AircraftTypeChangePolicy.Handlers
     using Messages;
     using Messages.Commands;
     using NServiceBus;
-    class AircraftTypeHasChangedHandler : IHandleMessages<AircraftTypeHasChanged>
+    class AircraftTypeWasChangedHandler : IHandleMessages<AircraftTypeWasChanged>
     {
-        public async Task Handle(AircraftTypeHasChanged message, IMessageHandlerContext context)
+        public async Task Handle(AircraftTypeWasChanged message, IMessageHandlerContext context)
         {
             // Find all the relevant booking references
 

@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AircraftTypeChangePolicy.cs\AircraftTypeChangePolicy.csproj" />
+    <ProjectReference Include="..\AircraftTypeChangePolicy\AircraftTypeChangePolicy.csproj" />
   </ItemGroup>
 
 </Project>
