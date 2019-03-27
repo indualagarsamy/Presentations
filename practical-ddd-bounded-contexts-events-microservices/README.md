@@ -14,7 +14,7 @@ The [First Model](https://github.com/indualagarsamy/Presentations/tree/master/pr
 
 ### Refactoring
 
-The [Refactored Model](https://github.com/indualagarsamy/Presentations/tree/master/practical-ddd-bounded-contexts-events-microservices/src/refactored-model) folder contains an example of a Saga that uses timeouts.
+The [Refactored Model](https://github.com/indualagarsamy/Presentations/tree/master/practical-ddd-bounded-contexts-events-microservices/src/refactored-model) uses better names for the messages, class names and uses immutable messages.
 
 
 
