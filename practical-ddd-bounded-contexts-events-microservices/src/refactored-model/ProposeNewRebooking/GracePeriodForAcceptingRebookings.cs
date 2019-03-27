@@ -29,11 +29,12 @@ namespace ProposeNewRebooking
 
             if (Data.CanCompleteSaga())
             {
+                logger.Info("Saga is now complete");
                 MarkAsComplete();
                 return;
             }
 
-            await context.Send(new NotifyCustomerAboutProposedRebooking(
+            await context.SendLocal(new NotifyCustomerAboutProposedRebooking(
                 message.BookingReferenceId,
                 message.ReasonForRebooking)).ConfigureAwait(false);
 
@@ -48,6 +49,7 @@ namespace ProposeNewRebooking
 
             if (Data.CanCompleteSaga())
             {
+                logger.Info("Saga is now complete");
                 MarkAsComplete();
             }
 
@@ -56,10 +58,13 @@ namespace ProposeNewRebooking
 
         public async Task Timeout(CancellationGracePeriodElapsed state, IMessageHandlerContext context)
         {
-            logger.Info("Received CancellationGracePeriodElapsed timeout message");
-            MarkAsComplete();
+            logger.Info("Received CancellationGracePeriodElapsed timeout message, publishing RebookingWasAccepted event ");
             await context.Publish(new RebookingWasAccepted(Data.BookingReferenceId))
                 .ConfigureAwait(false);
+
+            logger.Info("Saga is now complete");
+            MarkAsComplete();
+         
         }
 
         private ILog logger = LogManager.GetLogger<GracePeriodForAcceptingRebookings>();

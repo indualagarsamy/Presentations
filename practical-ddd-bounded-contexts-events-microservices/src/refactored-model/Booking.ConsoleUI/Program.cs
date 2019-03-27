@@ -3,6 +3,7 @@
     using System;
     using System.Threading.Tasks;
     using Commands;
+    using Events;
     using FlightPlanning.Events;
     using NServiceBus;
 
@@ -13,6 +14,7 @@
             Console.Title = "Booking.ConsoleUI";
             var endpointConfiguration = new EndpointConfiguration("Booking.ConsoleUI");
             var transport = endpointConfiguration.UseTransport<LearningTransport>();
+            endpointConfiguration.UseSerialization<NewtonsoftSerializer>();
 
             var endpointInstance = await Endpoint.Start(endpointConfiguration).ConfigureAwait(false);
 
@@ -34,12 +36,12 @@
                 switch (key.Key)
                 {
                     case ConsoleKey.A:
-                        var changeAircraftType = new AircraftTypeHasChanged("", "", "", DateTime.Today);
-                        await endpointInstance.Publish(changeAircraftType).ConfigureAwait(false);
+                        var aircraftTypeHasChanged = new AircraftTypeHasChanged("B38M", "B739", "AA4079", DateTime.Today);
+                        await endpointInstance.Publish(aircraftTypeHasChanged).ConfigureAwait(false);
                         break;
                     case ConsoleKey.C:
-                        var cancelRebooking = new CancelBooking("QAZ123", "1");
-                        await endpointInstance.Send(cancelRebooking).ConfigureAwait(false);
+                        var bookingWasCancelled = new BookingWasCancelled("QAZ123");
+                        await endpointInstance.Publish(bookingWasCancelled).ConfigureAwait(false);
                         break;
                     case ConsoleKey.Q:
                         return;
