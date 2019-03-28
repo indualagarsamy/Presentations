@@ -2,7 +2,8 @@
 {
     using NServiceBus;
 
-    public class NotifyCustomerAboutProposedRebooking : ICommand
+    public class NotifyCustomerAboutProposedRebooking :
+        ICommand
     {
         public NotifyCustomerAboutProposedRebooking(
             string bookingReferenceId,

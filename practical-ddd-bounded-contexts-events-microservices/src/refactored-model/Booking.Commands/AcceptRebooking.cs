@@ -2,7 +2,8 @@
 {
     using NServiceBus;
 
-    public class AcceptRebooking : ICommand
+    public class AcceptRebooking :
+        ICommand
     {
         public AcceptRebooking(string bookingReferenceId, string customerId)
         {

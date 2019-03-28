@@ -3,7 +3,8 @@ using Messages;
 using Messages.Commands;
 using NServiceBus;
 
-class AircraftTypeWasChangedHandler : IHandleMessages<AircraftTypeWasChanged>
+class AircraftTypeWasChangedHandler :
+    IHandleMessages<AircraftTypeWasChanged>
 {
     public async Task Handle(AircraftTypeWasChanged message, IMessageHandlerContext context)
     {

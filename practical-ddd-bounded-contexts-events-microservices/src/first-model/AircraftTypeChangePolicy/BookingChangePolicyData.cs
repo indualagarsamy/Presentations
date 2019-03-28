@@ -1,6 +1,7 @@
 ﻿using NServiceBus;
 
-public class BookingChangePolicyData : ContainSagaData
+public class BookingChangePolicyData :
+    ContainSagaData
 {
     public string BookingReferenceId { get; set; }
 

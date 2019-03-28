@@ -2,7 +2,8 @@
 {
     using NServiceBus;
 
-    public class ProposeRebooking : ICommand
+    public class ProposeRebooking :
+        ICommand
     {
         public ProposeRebooking(string bookingReferenceId, string customerId, string reasonForRebooking)
         {

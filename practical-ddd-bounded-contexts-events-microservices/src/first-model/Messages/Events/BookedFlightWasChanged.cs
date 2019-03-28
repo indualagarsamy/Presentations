@@ -1,10 +1,9 @@
 ﻿namespace Messages
 {
-    using System.Net.NetworkInformation;
     using NServiceBus;
-    using NServiceBus.Pipeline;
 
-    public class BookedFlightWasChanged : IEvent
+    public class BookedFlightWasChanged :
+        IEvent
     {
         public string BookingReferenceId { get; set; }
         public string FlightNumber { get; set; }

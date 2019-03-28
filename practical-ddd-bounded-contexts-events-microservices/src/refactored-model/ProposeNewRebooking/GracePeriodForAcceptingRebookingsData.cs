@@ -1,6 +1,7 @@
 ﻿using NServiceBus;
 
-public class GracePeriodForAcceptingRebookingsData : ContainSagaData
+public class GracePeriodForAcceptingRebookingsData :
+    ContainSagaData
 {
     public string BookingReferenceId { get; set; }
 

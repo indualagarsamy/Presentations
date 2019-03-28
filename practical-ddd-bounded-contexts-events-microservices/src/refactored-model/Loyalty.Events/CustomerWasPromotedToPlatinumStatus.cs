@@ -2,8 +2,9 @@
 {
     using System;
     using NServiceBus;
-    
-    public class CustomerWasPromotedToPlatinumStatus : IEvent
+
+    public class CustomerWasPromotedToPlatinumStatus :
+        IEvent
     {
         public CustomerWasPromotedToPlatinumStatus(string customerId,
             DateTime effectiveFrom,

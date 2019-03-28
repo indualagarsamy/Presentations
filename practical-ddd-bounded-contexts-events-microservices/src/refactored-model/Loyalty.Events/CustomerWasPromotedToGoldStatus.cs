@@ -3,10 +3,12 @@
     using NServiceBus;
     using System;
 
-    public class CustomerWasPromotedToGoldStatus : IEvent
+    public class CustomerWasPromotedToGoldStatus :
+        IEvent
     {
-        public CustomerWasPromotedToGoldStatus(string customerId, 
-            DateTime effectiveFrom, 
+        public CustomerWasPromotedToGoldStatus(
+            string customerId,
+            DateTime effectiveFrom,
             DateTime effectiveUntil)
         {
             CustomerId = customerId;

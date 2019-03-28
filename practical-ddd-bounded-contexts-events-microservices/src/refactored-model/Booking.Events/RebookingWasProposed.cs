@@ -2,7 +2,8 @@
 {
     using NServiceBus;
 
-    public class RebookingWasProposed : IEvent
+    public class RebookingWasProposed :
+        IEvent
     {
         public RebookingWasProposed(string bookingReferenceId, string reasonForRebooking)
         {

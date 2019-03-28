@@ -5,7 +5,8 @@ using Booking.Commands;
 using Booking.Events;
 using NServiceBus;
 
-public class GracePeriodForAcceptingRebookings : Saga<GracePeriodForAcceptingRebookingsData>,
+public class GracePeriodForAcceptingRebookings :
+    Saga<GracePeriodForAcceptingRebookingsData>,
     IAmStartedByMessages<RebookingWasProposed>,
     IAmStartedByMessages<BookingWasCancelled>,
     IHandleTimeouts<GracePeriodForAcceptingRebookings.CancellationGracePeriodElapsed>

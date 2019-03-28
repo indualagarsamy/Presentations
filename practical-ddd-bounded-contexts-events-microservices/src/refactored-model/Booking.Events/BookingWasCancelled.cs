@@ -2,7 +2,8 @@
 {
     using NServiceBus;
 
-    public class BookingWasCancelled : IEvent
+    public class BookingWasCancelled :
+        IEvent
     {
         public BookingWasCancelled(string bookingReferenceId)
         {

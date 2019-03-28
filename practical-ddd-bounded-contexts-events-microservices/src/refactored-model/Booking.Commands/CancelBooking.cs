@@ -2,7 +2,8 @@
 {
     using NServiceBus;
 
-    public class CancelBooking : ICommand
+    public class CancelBooking :
+        ICommand
     {
         public CancelBooking(string bookingReferenceId, string customerId)
         {

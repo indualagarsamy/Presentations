@@ -3,7 +3,8 @@ using Messages;
 using Messages.Commands;
 using NServiceBus;
 
-class RebookFlightHandler : IHandleMessages<RebookFlight>
+class RebookFlightHandler :
+    IHandleMessages<RebookFlight>
 {
     public Task Handle(RebookFlight message, IMessageHandlerContext context)
     {

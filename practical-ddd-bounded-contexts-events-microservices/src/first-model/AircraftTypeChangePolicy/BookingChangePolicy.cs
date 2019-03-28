@@ -5,7 +5,8 @@ using Messages.Commands;
 using Messages.Events;
 using NServiceBus;
 
-public class BookingChangePolicy : Saga<BookingChangePolicyData>,
+public class BookingChangePolicy :
+    Saga<BookingChangePolicyData>,
     IAmStartedByMessages<BookedFlightWasChanged>,
     IAmStartedByMessages<BookingWasCancelled>,
     IHandleTimeouts<BookingChangePolicy.CancellationGracePeriodElapsed>
