@@ -1,5 +1,4 @@
 ﻿using NServiceBus.Logging;
-
 using FlightPlanning.Events;
 using Booking.Commands;
 using NServiceBus;
@@ -32,9 +31,10 @@ public class ProposeNewRebookingWhenAircraftTypeHasChanged :
         // Find a new route and once you find a good itinerary, publish event
 
         logger.Info("Received ProposeRebooking command, publishing RebookingWasProposed event");
-        return context.Publish(new RebookingWasProposed(
-            message.BookingReferenceId,
-            message.ReasonForRebooking));
+        return context.Publish(
+            new RebookingWasProposed(
+                message.BookingReferenceId,
+                message.ReasonForRebooking));
     }
 
     static ILog logger = LogManager.GetLogger<ProposeNewRebookingWhenAircraftTypeHasChanged>();
