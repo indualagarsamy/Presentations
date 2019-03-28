@@ -5,12 +5,12 @@ using NServiceBus;
 
 class RebookFlightHandler : IHandleMessages<RebookFlight>
 {
-    public async Task Handle(RebookFlight message, IMessageHandlerContext context)
+    public Task Handle(RebookFlight message, IMessageHandlerContext context)
     {
-        await context.Publish(new BookedFlightWasChanged
+        return context.Publish(new BookedFlightWasChanged
         {
             BookingReferenceId = message.BookingReferenceId,
             ReasonForChange = message.ReasonForRebooking
-        }).ConfigureAwait(false);
+        });
     }
 }

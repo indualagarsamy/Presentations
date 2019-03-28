@@ -27,14 +27,14 @@ public class ProposeNewRebookingWhenAircraftTypeHasChanged :
         //}
     }
 
-    public async Task Handle(ProposeRebooking message, IMessageHandlerContext context)
+    public Task Handle(ProposeRebooking message, IMessageHandlerContext context)
     {
         // Find a new route and once you find a good itinerary, publish event
 
         logger.Info("Received ProposeRebooking command, publishing RebookingWasProposed event");
-        await context.Publish(new RebookingWasProposed(
+        return context.Publish(new RebookingWasProposed(
             message.BookingReferenceId,
-            message.ReasonForRebooking)).ConfigureAwait(false);
+            message.ReasonForRebooking));
     }
 
     ILog logger = LogManager.GetLogger<ProposeNewRebookingWhenAircraftTypeHasChanged>();

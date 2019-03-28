@@ -51,14 +51,14 @@ public class BookingChangePolicy : Saga<BookingChangePolicyData>,
         return Task.CompletedTask;
     }
 
-    public async Task Timeout(CancellationGracePeriodElapsed state, IMessageHandlerContext context)
+    public Task Timeout(CancellationGracePeriodElapsed state, IMessageHandlerContext context)
     {
         MarkAsComplete();
-        await context.Publish(new BookingWasConfirmed()
+        return context.Publish(new BookingWasConfirmed()
         {
             BookingReferenceId = Data.BookingReferenceId,
             ConfirmationDate = DateTime.UtcNow
-        }).ConfigureAwait(false);
+        });
     }
 
     public class CancellationGracePeriodElapsed
