@@ -29,8 +29,7 @@ public class WhenRebookingWasProposedTests
     [Test]
     public async Task ShouldNotifyCustomers()
     {
-        await saga.Handle(rebookingWasProposed, context)
-            .ConfigureAwait(false);
+        await saga.Handle(rebookingWasProposed, context);
         Assert.AreEqual(2, context.SentMessages.Length);
         Assert.AreEqual(1, context.TimeoutMessages.Length);
         var processMessage = (NotifyCustomerAboutProposedRebooking) context.SentMessages[0].Message;
@@ -40,10 +39,8 @@ public class WhenRebookingWasProposedTests
     [Test]
     public async Task ShouldAcceptTheRebooking()
     {
-        await saga.Handle(rebookingWasProposed, context)
-            .ConfigureAwait(false);
-        await saga.Timeout(new GracePeriodForAcceptingRebookings.CancellationGracePeriodElapsed(), context)
-            .ConfigureAwait(false);
+        await saga.Handle(rebookingWasProposed, context);
+        await saga.Timeout(new GracePeriodForAcceptingRebookings.CancellationGracePeriodElapsed(), context);
 
         Assert.IsTrue(saga.Completed);
         Assert.AreEqual(1, context.PublishedMessages.Length);
@@ -54,13 +51,11 @@ public class WhenRebookingWasProposedTests
     [Test]
     public async Task ShouldNotAcceptTheRebooking()
     {
-        await saga.Handle(rebookingWasProposed, context)
-            .ConfigureAwait(false);
+        await saga.Handle(rebookingWasProposed, context);
 
         var bookingWasCancelled = new BookingWasCancelled(bookingReferenceId);
 
-        await saga.Handle(bookingWasCancelled, context)
-            .ConfigureAwait(false);
+        await saga.Handle(bookingWasCancelled, context);
 
         Assert.IsTrue(saga.Completed);
         Assert.AreEqual(0, context.PublishedMessages.Length);

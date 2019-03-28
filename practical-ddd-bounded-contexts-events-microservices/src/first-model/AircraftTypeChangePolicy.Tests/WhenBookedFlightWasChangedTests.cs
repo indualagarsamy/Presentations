@@ -33,8 +33,7 @@ public class WhenBookedFlightWasChangedTests
     [Test]
     public async Task ShouldNotifyCustomers()
     {
-        await saga.Handle(bookedFlightWasChanged, context)
-            .ConfigureAwait(false);
+        await saga.Handle(bookedFlightWasChanged, context);
         Assert.AreEqual(2, context.SentMessages.Length);
         Assert.AreEqual(1, context.TimeoutMessages.Length);
         var processMessage = (NotifyCustomerAboutFlightChange) context.SentMessages[0].Message;
@@ -44,10 +43,8 @@ public class WhenBookedFlightWasChangedTests
     [Test]
     public async Task ShouldConfirmTheBooking()
     {
-        await saga.Handle(bookedFlightWasChanged, context)
-            .ConfigureAwait(false);
-        await saga.Timeout(new BookingChangePolicy.CancellationGracePeriodElapsed(), context)
-            .ConfigureAwait(false);
+        await saga.Handle(bookedFlightWasChanged, context);
+        await saga.Timeout(new BookingChangePolicy.CancellationGracePeriodElapsed(), context);
 
         Assert.IsTrue(saga.Completed);
         Assert.AreEqual(1, context.PublishedMessages.Length);
@@ -58,8 +55,7 @@ public class WhenBookedFlightWasChangedTests
     [Test]
     public async Task ShouldNotConfirmTheBooking()
     {
-        await saga.Handle(bookedFlightWasChanged, context)
-            .ConfigureAwait(false);
+        await saga.Handle(bookedFlightWasChanged, context);
 
         var bookingWasCancelled = new BookingWasCancelled
         {
@@ -67,8 +63,7 @@ public class WhenBookedFlightWasChangedTests
             CancellationReason = "Aircraft type was changed from Boeing 787 to Boeing 777"
         };
 
-        await saga.Handle(bookingWasCancelled, context)
-            .ConfigureAwait(false);
+        await saga.Handle(bookingWasCancelled, context);
 
         Assert.IsTrue(saga.Completed);
         Assert.AreEqual(0, context.PublishedMessages.Length);

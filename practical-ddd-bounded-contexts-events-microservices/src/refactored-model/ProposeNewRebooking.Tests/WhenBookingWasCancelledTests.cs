@@ -26,23 +26,20 @@ public class WhenBookingWasCancelledTests
     [Test]
     public async Task ShouldWaitUntilRebookingWasProposed()
     {
-        await saga.Handle(bookingWasCancelled, context)
-            .ConfigureAwait(false);
+        await saga.Handle(bookingWasCancelled, context);
         Assert.IsFalse(saga.Completed);
     }
 
     [Test]
     public async Task ShouldNotNotifyCustomers()
     {
-        await saga.Handle(bookingWasCancelled, context)
-            .ConfigureAwait(false);
+        await saga.Handle(bookingWasCancelled, context);
 
         var rebookingWasProposed = new RebookingWasProposed(
             bookingReferenceId,
             "Aircraft type was changed from Boeing 787 to Boeing 777");
 
-        await saga.Handle(rebookingWasProposed, context)
-            .ConfigureAwait(false);
+        await saga.Handle(rebookingWasProposed, context);
 
         Assert.IsTrue(saga.Completed);
         Assert.AreEqual(0, context.SentMessages.Length);
