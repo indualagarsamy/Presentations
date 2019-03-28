@@ -18,8 +18,11 @@ namespace FlightPlanning.Events
             EffectiveFrom = effectiveFrom;
         }
 
-        public string OldAircraftTypeId { get;} // Eg. B38M (Boeing 737 Max 8) B39M
-        public string NewAircraftTypeId { get;} // Eg. B739 (Boeing 737-900)
+        // Eg. B38M (Boeing 737 Max 8) B39M
+        public string OldAircraftTypeId { get;}
+
+        // Eg. B739 (Boeing 737-900)
+        public string NewAircraftTypeId { get;}
 
         public string FlightId { get; }
         public DateTime EffectiveFrom { get;}

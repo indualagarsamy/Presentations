@@ -17,7 +17,8 @@ public class ProposeNewRebookingWhenAircraftTypeHasChanged :
         // foreach (affected flight in the list of bookings)
         //{
 
-        var cmd = new ProposeRebooking(bookingReferenceId: "QAZ123",
+        var cmd = new ProposeRebooking(
+            bookingReferenceId: "QAZ123",
             customerId: "1",
             reasonForRebooking: $"Aircraft type was changed from {message.OldAircraftTypeId} to {message.NewAircraftTypeId} on flight {message.FlightId}");
 
