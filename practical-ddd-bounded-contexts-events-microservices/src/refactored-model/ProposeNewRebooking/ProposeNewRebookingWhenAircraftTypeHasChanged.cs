@@ -37,5 +37,5 @@ public class ProposeNewRebookingWhenAircraftTypeHasChanged :
             message.ReasonForRebooking));
     }
 
-    ILog logger = LogManager.GetLogger<ProposeNewRebookingWhenAircraftTypeHasChanged>();
+    static ILog logger = LogManager.GetLogger<ProposeNewRebookingWhenAircraftTypeHasChanged>();
 }

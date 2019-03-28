@@ -12,5 +12,5 @@ class SendAnEmailAboutTheProposedRebookingToCustomers :
         return Task.CompletedTask;
     }
 
-    ILog logger = LogManager.GetLogger<SendAnEmailAboutTheProposedRebookingToCustomers>();
+    static ILog logger = LogManager.GetLogger<SendAnEmailAboutTheProposedRebookingToCustomers>();
 }

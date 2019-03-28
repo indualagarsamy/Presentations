@@ -65,7 +65,8 @@ public class GracePeriodForAcceptingRebookings :
         MarkAsComplete();
 
     }
-    ILog logger = LogManager.GetLogger<GracePeriodForAcceptingRebookings>();
+
+    static ILog logger = LogManager.GetLogger<GracePeriodForAcceptingRebookings>();
 
     public class CancellationGracePeriodElapsed
     {
