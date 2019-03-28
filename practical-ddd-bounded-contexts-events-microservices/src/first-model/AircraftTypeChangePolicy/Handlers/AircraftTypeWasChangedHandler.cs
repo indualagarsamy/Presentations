@@ -18,8 +18,9 @@ class AircraftTypeWasChangedHandler :
             new RebookFlight
             {
                 BookingReferenceId = "XYZ123",
-                ReasonForRebooking = $"Aircraft type was changed from {message.OldAirCraftTypeId} to {message.NewAircraftTypeId}"
-            }).ConfigureAwait(false);
+                ReasonForRebooking = $"Aircraft type was changed from {message.OldAircraftTypeId} to {message.NewAircraftTypeId}"
+            })
+            .ConfigureAwait(false);
         //}
     }
 }

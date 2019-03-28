@@ -20,7 +20,7 @@ public class ProposeNewRebookingWhenAircraftTypeHasChanged :
 
         var cmd = new ProposeRebooking(bookingReferenceId: "QAZ123",
             customerId: "1",
-            reasonForRebooking: $"Aircraft type was changed from {message.OldAirCraftTypeId} to {message.NewAircraftTypeId} on flight {message.FlightId}");
+            reasonForRebooking: $"Aircraft type was changed from {message.OldAircraftTypeId} to {message.NewAircraftTypeId} on flight {message.FlightId}");
 
         logger.Info("Received AircraftTypeHasChanged event, sending ProposeRebooking command");
         await context.SendLocal(cmd).ConfigureAwait(false);
