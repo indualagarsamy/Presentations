@@ -15,7 +15,7 @@ public class WhenBookingWasCancelledTests
     [SetUp]
     public void Setup()
     {
-        saga = new GracePeriodForAcceptingRebookings()
+        saga = new GracePeriodForAcceptingRebookings
         {
             Data = new GracePeriodForAcceptingRebookingsData()
         };

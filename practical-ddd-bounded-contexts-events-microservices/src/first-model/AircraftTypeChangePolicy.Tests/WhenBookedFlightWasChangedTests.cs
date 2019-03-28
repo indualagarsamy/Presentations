@@ -16,7 +16,7 @@ public class WhenBookedFlightWasChangedTests
     [SetUp]
     public void Setup()
     {
-        saga = new BookingChangePolicy()
+        saga = new BookingChangePolicy
         {
             Data = new BookingChangePolicyData()
         };

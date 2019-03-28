@@ -10,7 +10,7 @@ class Program
     {
         Console.Title = "Booking.ConsoleUI";
         var endpointConfiguration = new EndpointConfiguration("Booking.ConsoleUI");
-        var transport = endpointConfiguration.UseTransport<LearningTransport>();
+        endpointConfiguration.UseTransport<LearningTransport>();
         endpointConfiguration.UseSerialization<NewtonsoftSerializer>();
 
         var endpointInstance = await Endpoint.Start(endpointConfiguration).ConfigureAwait(false);

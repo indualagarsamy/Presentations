@@ -31,11 +31,13 @@ public class BookingChangePolicy :
             return;
         }
 
-        await context.Send(new NotifyCustomerAboutFlightChange()
-        {
-            BookingReferenceId = message.BookingReferenceId,
-            ReasonForChange = message.ReasonForChange
-        }).ConfigureAwait(false);
+        await context.Send(
+            new NotifyCustomerAboutFlightChange
+            {
+                BookingReferenceId = message.BookingReferenceId,
+                ReasonForChange = message.ReasonForChange
+            })
+            .ConfigureAwait(false);
 
         await RequestTimeout(context, TimeSpan.FromSeconds(15), new CancellationGracePeriodElapsed()).ConfigureAwait(false);
     }
@@ -55,11 +57,12 @@ public class BookingChangePolicy :
     public Task Timeout(CancellationGracePeriodElapsed state, IMessageHandlerContext context)
     {
         MarkAsComplete();
-        return context.Publish(new BookingWasConfirmed()
-        {
-            BookingReferenceId = Data.BookingReferenceId,
-            ConfirmationDate = DateTime.UtcNow
-        });
+        return context.Publish(
+            new BookingWasConfirmed
+            {
+                BookingReferenceId = Data.BookingReferenceId,
+                ConfirmationDate = DateTime.UtcNow
+            });
     }
 
     public class CancellationGracePeriodElapsed

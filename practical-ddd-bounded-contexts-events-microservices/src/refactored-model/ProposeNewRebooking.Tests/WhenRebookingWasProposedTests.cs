@@ -15,7 +15,7 @@ public class WhenRebookingWasProposedTests
     [SetUp]
     public void Setup()
     {
-        saga = new GracePeriodForAcceptingRebookings()
+        saga = new GracePeriodForAcceptingRebookings
         {
             Data = new GracePeriodForAcceptingRebookingsData()
         };
