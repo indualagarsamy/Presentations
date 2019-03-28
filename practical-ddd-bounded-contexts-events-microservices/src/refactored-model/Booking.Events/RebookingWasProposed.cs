@@ -10,7 +10,7 @@
             ReasonForRebooking = reasonForRebooking;
         }
         public string BookingReferenceId { get; }
-        
+
         public string ReasonForRebooking { get; }
     }
 }

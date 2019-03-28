@@ -1,18 +1,15 @@
-﻿namespace ProposeNewRebooking
+﻿using NServiceBus;
+
+public class GracePeriodForAcceptingRebookingsData : ContainSagaData
 {
-    using NServiceBus;
-    public class GracePeriodForAcceptingRebookingsData : ContainSagaData
+    public string BookingReferenceId { get; set; }
+
+    public bool IsBookingCancelled { get; set; }
+
+    public bool IsRebookingProposed { get; set; }
+
+    public bool CanCompleteSaga()
     {
-        public string BookingReferenceId { get; set; }
-
-        public bool IsBookingCancelled { get; set; }
-
-        public bool IsRebookingProposed { get; set; }
-
-
-        public bool CanCompleteSaga()
-        {
-            return IsBookingCancelled && IsRebookingProposed;
-        }
+        return IsBookingCancelled && IsRebookingProposed;
     }
 }
