@@ -6,10 +6,10 @@
     public class AircraftTypeWasChanged :
         IEvent
     {
-        // Eg. B38M (Boeing 737 Max 8) B39M
+        // Eg. Boeing 787 Dreamliner
         public string OldAircraftTypeId { get; set; }
 
-        // Eg. B739 (Boeing 737-900)
+        // Boeing 777-300ER
         public string NewAircraftTypeId { get; set; }
 
         public string FlightId { get; set; }
