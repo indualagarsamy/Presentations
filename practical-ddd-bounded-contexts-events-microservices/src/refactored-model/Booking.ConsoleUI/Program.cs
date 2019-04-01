@@ -25,7 +25,7 @@ class Program
         while (true)
         {
             Console.WriteLine("Press A to notify subscribers that an aircraft has changed");
-            Console.WriteLine("Press C to cancel a rebooking request");
+            Console.WriteLine("Press C to cancel a reseating request");
             Console.WriteLine("Press Q to quit");
             var key = Console.ReadKey();
             Console.WriteLine();

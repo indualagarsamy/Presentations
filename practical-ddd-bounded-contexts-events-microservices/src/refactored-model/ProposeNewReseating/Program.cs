@@ -6,9 +6,9 @@ class Program
 {
     static async Task Main()
     {
-        Console.Title = "ProposeNewRebooking";
+        Console.Title = "ProposeNewReseating";
 
-        var endpointConfiguration = new EndpointConfiguration("ProposeNewRebooking");
+        var endpointConfiguration = new EndpointConfiguration("ProposeNewReseating");
         endpointConfiguration.UseTransport<LearningTransport>();
         endpointConfiguration.UsePersistence<InMemoryPersistence>();
         endpointConfiguration.UseSerialization<NewtonsoftSerializer>();

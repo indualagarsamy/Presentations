@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <ApplicationIcon />
+    <OutputType>Exe</OutputType>
+    <StartupObject />
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NServiceBus" Version="7.1.6" />
+    <PackageReference Include="NServicebus.Newtonsoft.Json" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Booking.Events\Booking.Events.csproj" />
+    <ProjectReference Include="..\FlightPlanning.Events\FlightPlanning.Events.csproj" />
+    <ProjectReference Include="..\Booking.Commands\Booking.Commands.csproj" />
+  </ItemGroup>
+
+</Project>
